@@ -1,0 +1,27 @@
+{
+  "workflowId": "wf-hbl-routine-svc",
+  "workflowName": "HarbourLink Routine Contract Service Report",
+  "facts": {
+    "projectCode": "HBL",
+    "reportCategory": "ROUTINE_CONTRACT_SERVICE",
+    "equipmentType": "FCU/AHU",
+    "serviceDate": "2026-07-08",
+    "referenceNumber": "SVC/HBL/072026/001",
+    "technicianName": "John Doe",
+    "observations": "Filter replaced and coils cleaned. Unit operating within normal parameters.",
+    "photoCaptions": "1. Filter before cleaning\n2. Filter after replacement",
+    "recommendations": "Recommend replacing belt next quarter."
+  },
+  "variables": {
+    "projectCode": "HBL",
+    "reportCategory": "ROUTINE_CONTRACT_SERVICE",
+    "equipmentType": "FCU/AHU",
+    "serviceDate": "2026-07-08",
+    "referenceNumber": "SVC/HBL/072026/001",
+    "technicianName": "John Doe",
+    "observations": "Filter replaced and coils cleaned. Unit operating within normal parameters.",
+    "photoCaptions": "1. Filter before cleaning\n2. Filter after replacement",
+    "recommendations": "Recommend replacing belt next quarter."
+  },
+  "steps": []
+}

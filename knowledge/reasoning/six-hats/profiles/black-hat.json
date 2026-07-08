@@ -1,0 +1,21 @@
+{
+  "id": "hat_black",
+  "name": "Black Hat",
+  "description": "Focuses on risks, failure modes, and pessimistic outcomes.",
+  "perspective": "Caution and Risk Assessment",
+  "deterministicChecks": [
+    {
+      "factKey": "context.securityRequirements",
+      "operator": "exists",
+      "severity": "warning",
+      "message": "Security requirements should be explicitly considered."
+    }
+  ],
+  "outputSchemaHints": {
+    "risks": "List all failure modes and negative consequences.",
+    "insights": "Highlight flaws in the proposed solution."
+  },
+  "escalationPolicy": {
+    "allowLLM": false
+  }
+}

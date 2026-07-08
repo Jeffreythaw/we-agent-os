@@ -1,0 +1,21 @@
+{
+  "id": "hat_white",
+  "name": "White Hat",
+  "description": "Focuses on available data, facts, and identifies missing information.",
+  "perspective": "Data and Facts",
+  "deterministicChecks": [
+    {
+      "factKey": "context.problemStatement",
+      "operator": "exists",
+      "severity": "error",
+      "message": "Problem statement must be explicitly defined."
+    }
+  ],
+  "outputSchemaHints": {
+    "insights": "List verified facts only.",
+    "missingFacts": "List any data points required but absent."
+  },
+  "escalationPolicy": {
+    "allowLLM": false
+  }
+}

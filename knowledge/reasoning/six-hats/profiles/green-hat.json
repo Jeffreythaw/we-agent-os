@@ -1,0 +1,14 @@
+{
+  "id": "hat_green",
+  "name": "Green Hat",
+  "description": "Focuses on creativity, alternatives, and novel solutions.",
+  "perspective": "Creativity and Alternatives",
+  "deterministicChecks": [],
+  "outputSchemaHints": {
+    "opportunities": "Propose alternative approaches or outside-the-box optimizations.",
+    "insights": "List new ideas not explicitly requested in the problem statement."
+  },
+  "escalationPolicy": {
+    "allowLLM": false
+  }
+}

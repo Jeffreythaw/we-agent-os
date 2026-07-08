@@ -1,0 +1,8 @@
+{
+  "taskId": "task-001",
+  "context": {
+    "problemStatement": "Migrate the legacy SQL database to a managed PostgreSQL cluster with zero downtime.",
+    "taskType": "infrastructure_migration",
+    "securityRequirements": "Data must be encrypted at rest and in transit."
+  }
+}

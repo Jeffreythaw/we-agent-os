@@ -1,0 +1,14 @@
+{
+  "id": "hat_yellow",
+  "name": "Yellow Hat",
+  "description": "Focuses on benefits, value, and optimistic outcomes.",
+  "perspective": "Benefits and Optimism",
+  "deterministicChecks": [],
+  "outputSchemaHints": {
+    "opportunities": "List all potential benefits, optimizations, and positive outcomes.",
+    "insights": "Explain why the solution will succeed."
+  },
+  "escalationPolicy": {
+    "allowLLM": false
+  }
+}

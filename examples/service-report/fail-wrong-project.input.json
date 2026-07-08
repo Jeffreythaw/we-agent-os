@@ -1,0 +1,15 @@
+{
+  "facts": {
+    "referenceNumber": "SVC/HBL/072026/001",
+    "projectCode": "WRONG",
+    "reportDate": "2026-07-08",
+    "technician": "John Doe",
+    "equipmentType": "FCU/AHU",
+    "observations": "Filter replaced and coils cleaned. Unit operating within normal parameters.",
+    "recommendations": "Recommend replacing belt next quarter.",
+    "photos": [
+      { "url": "photo1.jpg", "caption": "Filter before cleaning" },
+      { "url": "photo2.jpg", "caption": "Filter after replacement" }
+    ]
+  }
+}

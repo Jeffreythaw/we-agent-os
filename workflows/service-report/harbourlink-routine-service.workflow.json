@@ -1,0 +1,108 @@
+{
+  "workflowId": "wf-hbl-routine-svc",
+  "workflowName": "HarbourLink Routine Contract Service Report",
+  "facts": {},
+  "variables": {},
+  "steps": [
+    {
+      "id": "step-1-validate",
+      "skillId": "system.rule_check",
+      "parameters": {
+        "rules": [
+          {
+            "factKey": "projectCode",
+            "operator": "exists",
+            "severity": "error",
+            "message": "Project Code is required."
+          },
+          {
+            "factKey": "projectCode",
+            "operator": "equals",
+            "expectedValue": "HBL",
+            "severity": "error",
+            "message": "Project Code must be HBL."
+          },
+          {
+            "factKey": "reportCategory",
+            "operator": "equals",
+            "expectedValue": "ROUTINE_CONTRACT_SERVICE",
+            "severity": "error",
+            "message": "Report Category must be ROUTINE_CONTRACT_SERVICE."
+          },
+          {
+            "factKey": "equipmentType",
+            "operator": "exists",
+            "severity": "error",
+            "message": "Equipment Type is required."
+          },
+          {
+            "factKey": "serviceDate",
+            "operator": "exists",
+            "severity": "error",
+            "message": "Service Date is required."
+          },
+          {
+            "factKey": "referenceNumber",
+            "operator": "regex",
+            "expectedValue": "^SVC/HBL/\\d{6}/\\d{3}$",
+            "severity": "error",
+            "message": "Reference Number must match SVC/HBL/MMYYYY/NNN format."
+          },
+          {
+            "factKey": "observations",
+            "operator": "exists",
+            "severity": "error",
+            "message": "Observations are required."
+          },
+          {
+            "factKey": "photoCaptions",
+            "operator": "exists",
+            "severity": "error",
+            "message": "Photo Captions are required."
+          }
+        ]
+      }
+    },
+    {
+      "id": "step-2-qa",
+      "skillId": "system.checklist_check",
+      "parameters": {
+        "checklist": {
+          "id": "cl-hbl-qa",
+          "name": "HarbourLink QA Checklist",
+          "items": [
+            {
+              "id": "item-1-tech",
+              "label": "Technician Name Valid",
+              "required": true,
+              "rule": {
+                "factKey": "technicianName",
+                "operator": "exists",
+                "severity": "error",
+                "message": "Technician Name is required for signoff."
+              }
+            },
+            {
+              "id": "item-2-rec",
+              "label": "Recommendations Provided",
+              "required": false,
+              "rule": {
+                "factKey": "recommendations",
+                "operator": "exists",
+                "severity": "warning",
+                "message": "Recommendations should ideally be provided."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "step-3-render",
+      "skillId": "system.template_render",
+      "parameters": {
+        "template": "# HarbourLink Service Report\n\n**Reference Number:** {{referenceNumber}}\n**Project:** {{projectCode}}\n**Date:** {{serviceDate}}\n**Technician:** {{technicianName}}\n**Equipment:** {{equipmentType}}\n\n## Observations\n{{observations}}\n\n## Recommendations\n{{recommendations}}\n\n## Photos\n{{photoCaptions}}\n"
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "hat_blue",
+  "name": "Blue Hat",
+  "description": "Focuses on process, sequencing, and decision readiness.",
+  "perspective": "Process Control and Synthesis",
+  "deterministicChecks": [
+    {
+      "factKey": "context.taskType",
+      "operator": "exists",
+      "severity": "error",
+      "message": "Task type must be defined to sequence execution."
+    }
+  ],
+  "outputSchemaHints": {
+    "insights": "Summarize the overarching process and sequence of operations.",
+    "risks": "Identify if the process is missing steps."
+  },
+  "escalationPolicy": {
+    "allowLLM": false
+  }
+}

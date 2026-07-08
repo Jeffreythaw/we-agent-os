@@ -1,0 +1,29 @@
+{
+  "taskId": "task-001",
+  "agreements": [
+    "PostgreSQL is a suitable modern replacement for the legacy SQL database."
+  ],
+  "conflicts": [
+    "Zero downtime requirement conflicts with the lack of dual-write application logic."
+  ],
+  "missingInformation": [
+    "Current database size in GB.",
+    "Acceptable maintenance window times."
+  ],
+  "risks": [
+    {
+      "severity": "critical",
+      "description": "Data corruption during live replication.",
+      "mitigationProposed": "Implement logical replication and verify hashes before cutover."
+    }
+  ],
+  "opportunities": [
+    "Use this migration to optimize indices for the top 5 heaviest queries."
+  ],
+  "clarificationQuestions": [
+    "Can the application support temporary read-only mode during final cutover?"
+  ],
+  "confidenceScore": 65,
+  "readinessScore": 45,
+  "readyForExecution": false
+}

@@ -1,0 +1,14 @@
+{
+  "id": "hat_red",
+  "name": "Red Hat",
+  "description": "Focuses on intuition, emotion, and stakeholder friction.",
+  "perspective": "Intuition and Emotion",
+  "deterministicChecks": [],
+  "outputSchemaHints": {
+    "insights": "Describe potential user sentiment and friction points.",
+    "risks": "Identify areas where user adoption may fail due to complexity."
+  },
+  "escalationPolicy": {
+    "allowLLM": false
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "we.reasoning.six_hats",
+  "name": "Six Thinking Hats",
+  "version": "1.0.0",
+  "author": "WE Agent OS",
+  "description": "De Bono's Six Thinking Hats reasoning methodology, structured for deterministic OS execution.",
+  "profiles": [
+    "profiles/white-hat.json",
+    "profiles/red-hat.json",
+    "profiles/black-hat.json",
+    "profiles/yellow-hat.json",
+    "profiles/green-hat.json",
+    "profiles/blue-hat.json"
+  ]
+}

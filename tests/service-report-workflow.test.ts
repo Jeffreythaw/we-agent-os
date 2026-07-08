@@ -1,0 +1,28 @@
+import { describe, it, expect } from 'vitest';
+import { WorkflowLoader } from '../src/workflows/workflow-loader.js';
+import { Kernel } from '../src/kernel/kernel.js';
+import path from 'node:path';
+
+describe('HarbourLink Service Report Workflow', () => {
+    it('should execute end-to-end and generate a markdown artifact', async () => {
+        const kernel = new Kernel();
+        await kernel.initialize();
+
+        const loader = new WorkflowLoader();
+        const wfPath = path.join(process.cwd(), 'workflows/service-report/harbourlink-routine-service.workflow.json');
+        const inputPath = path.join(process.cwd(), 'examples/service-report/harbourlink-routine-service.input.json');
+
+        const input = await loader.load(wfPath, inputPath);
+        
+        const result = await kernel.executeWorkflow(input);
+
+        expect(result.passed).toBe(true);
+        expect(result.artifacts.length).toBe(1);
+        
+        const artifactContent = result.artifacts[0].content;
+        expect(artifactContent).toContain('# HarbourLink Service Report');
+        expect(artifactContent).toContain('SVC/HBL/072026/001');
+        expect(artifactContent).toContain('Filter replaced and coils cleaned');
+        expect(artifactContent).toContain('Recommend replacing belt next quarter');
+    });
+});
