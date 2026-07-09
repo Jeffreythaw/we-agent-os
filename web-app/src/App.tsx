@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import ServiceReportView from './ServiceReportView';
 
 function App() {
   const [currentView, setCurrentView] = useState('dashboard');
@@ -39,77 +40,6 @@ function DashboardView() {
     <div className="card">
       <h3>Welcome back, Engineer</h3>
       <p>Select a task from the sidebar to begin.</p>
-    </div>
-  );
-}
-
-function ServiceReportView() {
-  const [jsonInput, setJsonInput] = useState('{\n  "workflowId": "wf-hbl-routine-svc",\n  "workflowName": "HarbourLink Routine Contract Service Report",\n  "facts": {\n    "referenceNo": "SVC/HBL/072026/001",\n    "projectCode": "HBL",\n    "reportCategory": "ROUTINE_CONTRACT_SERVICE",\n    "client": "HarbourLink Marine Services",\n    "serviceDate": "2026-07-08",\n    "technicianName": "John Doe",\n    "equipment": "FCU/AHU",\n    "workDescription": "Routine monthly maintenance on main deck FCU.",\n    "findings": "Filter was clogged. Coils were dirty but intact. No leaks detected.",\n    "recommendations": "Recommend replacing belt next quarter.",\n    "photoCaptions": "1. Filter before cleaning\\n2. Filter after replacement",\n    "finalOperatingCondition": "Unit operating within normal parameters. Cooling restored.",\n    "preparedBy": "John Doe",\n    "checkedBy": "Jane Smith",\n    "clientRepresentative": "Alice Johnson",\n    "clientAcknowledgementDate": "2026-07-08"\n  },\n  "variables": {\n    "referenceNo": "SVC/HBL/072026/001",\n    "projectCode": "HBL",\n    "reportCategory": "ROUTINE_CONTRACT_SERVICE",\n    "client": "HarbourLink Marine Services",\n    "serviceDate": "2026-07-08",\n    "technicianName": "John Doe",\n    "equipment": "FCU/AHU",\n    "workDescription": "Routine monthly maintenance on main deck FCU.",\n    "findings": "Filter was clogged. Coils were dirty but intact. No leaks detected.",\n    "recommendations": "Recommend replacing belt next quarter.",\n    "photoCaptions": "1. Filter before cleaning\\n2. Filter after replacement",\n    "finalOperatingCondition": "Unit operating within normal parameters. Cooling restored.",\n    "preparedBy": "John Doe",\n    "checkedBy": "Jane Smith",\n    "clientRepresentative": "Alice Johnson",\n    "clientAcknowledgementDate": "2026-07-08"\n  }\n}');
-  const [htmlOutput, setHtmlOutput] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  const handleGenerate = async () => {
-    setLoading(true);
-    setError('');
-    setHtmlOutput('');
-    try {
-      const response = await fetch('/api/generate-report', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: jsonInput
-      });
-      
-      if (!response.ok) {
-        throw new Error(await response.text());
-      }
-      
-      const html = await response.text();
-      setHtmlOutput(html);
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handlePrint = () => {
-    const printWindow = window.open('', '', 'width=800,height=600');
-    if (printWindow) {
-      printWindow.document.write(htmlOutput);
-      printWindow.document.close();
-      printWindow.focus();
-      printWindow.print();
-    }
-  };
-
-  return (
-    <div className="card" style={{ display: 'flex', gap: '20px' }}>
-      <div style={{ flex: 1 }}>
-        <h3>Service Report Payload (JSON)</h3>
-        <textarea 
-          style={{ width: '100%', height: '500px', fontFamily: 'monospace', padding: '10px' }}
-          value={jsonInput}
-          onChange={(e) => setJsonInput(e.target.value)}
-        />
-        <br/><br/>
-        <button className="primary-btn" onClick={handleGenerate} disabled={loading}>
-          {loading ? 'Generating...' : 'Generate HTML Report'}
-        </button>
-        {error && <div style={{ color: 'red', marginTop: '10px', whiteSpace: 'pre-wrap' }}>{error}</div>}
-      </div>
-      <div style={{ flex: 1 }}>
-        <h3>Preview</h3>
-        {htmlOutput ? (
-          <div>
-            <div style={{ border: '1px solid #ccc', padding: '10px', height: '460px', overflowY: 'auto' }} dangerouslySetInnerHTML={{ __html: htmlOutput }} />
-            <br/>
-            <button className="primary-btn" onClick={handlePrint} style={{ background: '#28a745' }}>Print / Save PDF</button>
-          </div>
-        ) : (
-          <div style={{ padding: '20px', color: '#666', border: '1px dashed #ccc', height: '460px' }}>No report generated yet.</div>
-        )}
-      </div>
     </div>
   );
 }
