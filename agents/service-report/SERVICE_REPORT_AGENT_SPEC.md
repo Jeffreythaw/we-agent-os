@@ -16,19 +16,18 @@ The Agent expects a strictly structured JSON payload matching the following sche
 ```json
 {
   "facts": {
-    "referenceNumber": "string (Required)",
     "projectCode": "string (Required, must equal 'HBL')",
-    "reportDate": "string (YYYY-MM-DD)",
-    "technician": "string",
-    "equipmentType": "string",
-    "observations": "string",
-    "recommendations": "string",
-    "photos": [
-      {
-        "url": "string (Required)",
-        "caption": "string (Required)"
-      }
-    ]
+    "reportCategory": "string (Required, must equal 'ROUTINE_CONTRACT_SERVICE')",
+    "client": "string (Required)",
+    "equipment": "string (Required)",
+    "serviceDate": "string (YYYY-MM-DD) (Required)",
+    "referenceNo": "string (Required, format ^SVC/HBL/\\d{6}/\\d{3}$)",
+    "technicianName": "string (Required by QA checklist)",
+    "workDescription": "string (Required)",
+    "findings": "string (Required)",
+    "photoCaptions": "string (Required)",
+    "finalOperatingCondition": "string (Required)",
+    "recommendations": "string (Optional)"
   }
 }
 ```

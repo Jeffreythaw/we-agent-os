@@ -25,7 +25,10 @@ describe('Service Report CLI Command', () => {
         expect(stdout).toContain('Success! Service report saved to');
         
         const fileContent = await fs.readFile(outputPath, 'utf-8');
-        expect(fileContent).toContain('# HarbourLink Service Report');
+        expect(fileContent).toContain('<h1>HarbourLink Service Report</h1>');
+        expect(fileContent).toContain('Signatures & Acknowledgement');
+        expect(fileContent).toContain('Alice Johnson');
+        expect(fileContent).not.toContain('{{');
     });
 
     it('should fail and not write file when input is invalid', async () => {

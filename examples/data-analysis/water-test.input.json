@@ -1,0 +1,16 @@
+{
+  "workflowId": "wf-data-water-test",
+  "workflowName": "Water Test Data Analysis",
+  "facts": {
+    "datasetId": "WT-2026-07-001",
+    "analysisCategory": "WATER_TEST",
+    "analysisDate": "2026-07-08",
+    "pH_level": "6.8",
+    "conductivity": "1200",
+    "summary": "Routine monthly water test for Chiller #1 condenser loop.",
+    "anomalies": "- pH level is 6.8 (below minimum threshold of 7.5), indicating potential corrosion risk.",
+    "recommendations": "Add alkaline pH adjuster immediately and re-test in 24 hours."
+  },
+  "variables": {},
+  "steps": []
+}

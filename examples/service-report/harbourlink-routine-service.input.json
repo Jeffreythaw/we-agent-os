@@ -2,26 +2,40 @@
   "workflowId": "wf-hbl-routine-svc",
   "workflowName": "HarbourLink Routine Contract Service Report",
   "facts": {
+    "referenceNo": "SVC/HBL/072026/001",
     "projectCode": "HBL",
     "reportCategory": "ROUTINE_CONTRACT_SERVICE",
-    "equipmentType": "FCU/AHU",
+    "client": "HarbourLink Marine Services",
     "serviceDate": "2026-07-08",
-    "referenceNumber": "SVC/HBL/072026/001",
     "technicianName": "John Doe",
-    "observations": "Filter replaced and coils cleaned. Unit operating within normal parameters.",
+    "equipment": "FCU/AHU",
+    "workDescription": "Routine monthly maintenance on main deck FCU.",
+    "findings": "Filter was clogged. Coils were dirty but intact. No leaks detected.",
+    "recommendations": "Recommend replacing belt next quarter.",
     "photoCaptions": "1. Filter before cleaning\n2. Filter after replacement",
-    "recommendations": "Recommend replacing belt next quarter."
+    "finalOperatingCondition": "Unit operating within normal parameters. Cooling restored.",
+    "preparedBy": "John Doe",
+    "checkedBy": "Jane Smith",
+    "clientRepresentative": "Alice Johnson",
+    "clientAcknowledgementDate": "2026-07-08"
   },
   "variables": {
+    "referenceNo": "SVC/HBL/072026/001",
     "projectCode": "HBL",
     "reportCategory": "ROUTINE_CONTRACT_SERVICE",
-    "equipmentType": "FCU/AHU",
+    "client": "HarbourLink Marine Services",
     "serviceDate": "2026-07-08",
-    "referenceNumber": "SVC/HBL/072026/001",
     "technicianName": "John Doe",
-    "observations": "Filter replaced and coils cleaned. Unit operating within normal parameters.",
+    "equipment": "FCU/AHU",
+    "workDescription": "Routine monthly maintenance on main deck FCU.",
+    "findings": "Filter was clogged. Coils were dirty but intact. No leaks detected.",
+    "recommendations": "Recommend replacing belt next quarter.",
     "photoCaptions": "1. Filter before cleaning\n2. Filter after replacement",
-    "recommendations": "Recommend replacing belt next quarter."
+    "finalOperatingCondition": "Unit operating within normal parameters. Cooling restored.",
+    "preparedBy": "John Doe",
+    "checkedBy": "Jane Smith",
+    "clientRepresentative": "Alice Johnson",
+    "clientAcknowledgementDate": "2026-07-08"
   },
   "steps": []
 }

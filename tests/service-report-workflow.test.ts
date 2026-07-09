@@ -20,9 +20,15 @@ describe('HarbourLink Service Report Workflow', () => {
         expect(result.artifacts.length).toBe(1);
         
         const artifactContent = result.artifacts[0].content;
-        expect(artifactContent).toContain('# HarbourLink Service Report');
+        expect(artifactContent).toContain('<!DOCTYPE html>');
+        expect(artifactContent).toContain('<h1>HarbourLink Service Report</h1>');
         expect(artifactContent).toContain('SVC/HBL/072026/001');
-        expect(artifactContent).toContain('Filter replaced and coils cleaned');
-        expect(artifactContent).toContain('Recommend replacing belt next quarter');
+        expect(artifactContent).toContain('<p>Filter was clogged. Coils were dirty but intact. No leaks detected.</p>');
+        expect(artifactContent).toContain('<p>Recommend replacing belt next quarter.</p>');
+        expect(artifactContent).toContain('<h2 class="section-title">Signatures & Acknowledgement</h2>');
+        expect(artifactContent).toContain('Prepared By:<br>John Doe');
+        expect(artifactContent).toContain('Checked By:<br>Jane Smith');
+        expect(artifactContent).toContain('Client Representative:<br>Alice Johnson');
+        expect(artifactContent).not.toContain('{{');
     });
 });

@@ -3,28 +3,63 @@
 The agent outputs a fully formatted Markdown (`.md`) artifact based on the `TEMPLATES.md` structure.
 
 **Schema:**
-- Format: Markdown
+- Format: HTML
 - Sections:
-  - Header with Reference Number, Project, Date, Technician, Equipment
-  - Observations section
+  - Header block with Reference Number, Project, Client, Date, Technician, Equipment
+  - Work Description section
+  - Findings section
   - Recommendations section
   - Photos section
+  - Final Operating Condition section
+  - Signature & Acknowledgement section
 
 **Example:**
-```markdown
-# HarbourLink Service Report
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { font-family: 'Helvetica', sans-serif; color: #333; }
+.header { border-bottom: 2px solid #005f99; padding-bottom: 10px; }
+.section-title { color: #005f99; margin-top: 20px; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 8px; border: 1px solid #ddd; text-align: left; }
+.signature-block { margin-top: 40px; width: 100%; }
+.sig-box { width: 30%; display: inline-block; padding-top: 50px; border-top: 1px solid #333; text-align: center; margin-right: 3%; }
+</style>
+</head>
+<body>
+<div class="header">
+<h1>HarbourLink Service Report</h1>
+<p><strong>Reference Number:</strong> SVC/HBL/072026/001</p>
+</div>
+<table>
+<tr><th>Project</th><td>HBL</td><th>Client</th><td>HarbourLink Marine Services</td></tr>
+<tr><th>Date</th><td>2026-07-08</td><th>Technician</th><td>John Doe</td></tr>
+<tr><th>Equipment</th><td colspan="3">FCU/AHU</td></tr>
+</table>
 
-**Reference Number:** SVC/HBL/072026/001
-**Project:** HBL
-**Date:** 2026-07-08
-**Technician:** John Doe
+<h2 class="section-title">Work Description</h2>
+<p>Routine monthly maintenance on main deck FCU.</p>
 
-## Observations
-Filter replaced and coils cleaned.
+<h2 class="section-title">Findings</h2>
+<p>Filter was clogged. Coils were dirty but intact. No leaks detected.</p>
 
-## Recommendations
-Recommend replacing belt next quarter.
+<h2 class="section-title">Recommendations</h2>
+<p>Recommend replacing belt next quarter.</p>
 
-## Photos
-Photo 1: Filter before cleaning
+<h2 class="section-title">Photos</h2>
+<p>1. Filter before cleaning</p>
+
+<h2 class="section-title">Final Operating Condition</h2>
+<p>Unit operating within normal parameters. Cooling restored.</p>
+
+<h2 class="section-title">Signatures & Acknowledgement</h2>
+<div class="signature-block">
+<div class="sig-box"><p>Prepared By:<br>John Doe</p></div>
+<div class="sig-box"><p>Checked By:<br>Jane Smith</p></div>
+<div class="sig-box"><p>Client Representative:<br>Alice Johnson<br>Date: 2026-07-08</p></div>
+</div>
+</body>
+</html>
 ```

@@ -28,6 +28,9 @@ describe('HarbourLink Service Report CLI Output File', () => {
         
         // Check file exists and content is correct
         const fileContent = await fs.readFile(outputPath, 'utf-8');
-        expect(fileContent).toContain('# HarbourLink Service Report');
+        expect(fileContent).toContain('<h1>HarbourLink Service Report</h1>');
+        expect(fileContent).toContain('Signatures & Acknowledgement');
+        expect(fileContent).toContain('Alice Johnson');
+        expect(fileContent).not.toContain('{{');
     });
 });

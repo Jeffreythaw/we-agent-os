@@ -13,19 +13,18 @@ The agent does not yet accept raw text or emails. It requires a strictly formatt
 ```json
 {
   "facts": {
-    "referenceNumber": "SVC/HBL/072026/001",
     "projectCode": "HBL",
-    "reportDate": "2026-07-08",
-    "technician": "John Doe",
-    "equipmentType": "FCU/AHU",
-    "observations": "Filter replaced and coils cleaned.",
-    "recommendations": "Recommend replacing belt next quarter.",
-    "photos": [
-      {
-        "url": "photo1.jpg",
-        "caption": "Filter before cleaning"
-      }
-    ]
+    "reportCategory": "ROUTINE_CONTRACT_SERVICE",
+    "client": "HarbourLink Marine Services",
+    "equipment": "FCU/AHU",
+    "serviceDate": "2026-07-08",
+    "referenceNo": "SVC/HBL/072026/001",
+    "technicianName": "John Doe",
+    "workDescription": "Routine monthly maintenance on main deck FCU.",
+    "findings": "Filter was clogged. Coils were dirty but intact. No leaks detected.",
+    "photoCaptions": "1. Filter before cleaning",
+    "finalOperatingCondition": "Unit operating within normal parameters. Cooling restored.",
+    "recommendations": "Recommend replacing belt next quarter."
   }
 }
 ```

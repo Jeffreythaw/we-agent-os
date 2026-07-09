@@ -1,0 +1,42 @@
+{
+  "workflowId": "wf-data-water-test",
+  "workflowName": "Water Test Data Analysis",
+  "facts": {},
+  "variables": {},
+  "steps": [
+    {
+      "id": "step-1-validate",
+      "skillId": "system.rule_check",
+      "parameters": {
+        "rules": [
+          {
+            "factKey": "datasetId",
+            "operator": "exists",
+            "severity": "error",
+            "message": "Dataset ID is required."
+          },
+          {
+            "factKey": "analysisCategory",
+            "operator": "equals",
+            "expectedValue": "WATER_TEST",
+            "severity": "error",
+            "message": "Analysis Category must be WATER_TEST."
+          },
+          {
+            "factKey": "pH_level",
+            "operator": "exists",
+            "severity": "error",
+            "message": "pH Level is required for a Water Test."
+          }
+        ]
+      }
+    },
+    {
+      "id": "step-2-render",
+      "skillId": "system.template_render",
+      "parameters": {
+        "template": "# Data Analysis Report\n\n**Dataset ID:** {{datasetId}}\n**Analysis Type:** {{analysisCategory}}\n**Date:** {{analysisDate}}\n\n## Summary\n{{summary}}\n\n## Anomalies Detected\n{{anomalies}}\n\n## Engineer Recommendations\n{{recommendations}}\n"
+      }
+    }
+  ]
+}

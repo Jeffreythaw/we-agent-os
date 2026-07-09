@@ -1,14 +1,21 @@
 {
+  "workflowId": "wf-hbl-routine-svc",
+  "workflowName": "HarbourLink Routine Contract Service Report",
   "facts": {
     "projectCode": "HBL",
-    "reportDate": "2026-07-08",
-    "technician": "John Doe",
-    "equipmentType": "FCU/AHU",
-    "observations": "Filter replaced and coils cleaned. Unit operating within normal parameters.",
+    "reportCategory": "ROUTINE_CONTRACT_SERVICE",
+    "client": "HarbourLink Marine Services",
+    "serviceDate": "2026-07-08",
+    "technicianName": "John Doe",
+    "equipment": "FCU/AHU",
+    "workDescription": "Routine monthly maintenance on main deck FCU.",
+    "findings": "Filter was clogged. Coils were dirty but intact. No leaks detected.",
     "recommendations": "Recommend replacing belt next quarter.",
-    "photos": [
-      { "url": "photo1.jpg", "caption": "Filter before cleaning" },
-      { "url": "photo2.jpg", "caption": "Filter after replacement" }
-    ]
+    "photoCaptions": "1. Filter before cleaning",
+    "finalOperatingCondition": "Unit operating within normal parameters. Cooling restored.",
+    "preparedBy": "John Doe",
+    "checkedBy": "Jane Smith",
+    "clientRepresentative": "Alice Johnson",
+    "clientAcknowledgementDate": "2026-07-08"
   }
 }
