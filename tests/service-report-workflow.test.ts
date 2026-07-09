@@ -19,16 +19,22 @@ describe('HarbourLink Service Report Workflow', () => {
         expect(result.passed).toBe(true);
         expect(result.artifacts.length).toBe(1);
         
+        // HYBRID GOLDEN VALIDATION STRATEGY
+        // Do NOT use brittle exact full-file string equality.
+        // We use deterministic structural/key-content checks against the expected.html logic.
+        // This ensures resilience to minor whitespace/formatting changes while guaranteeing data integrity.
         const artifactContent = result.artifacts[0].content;
         expect(artifactContent).toContain('<!DOCTYPE html>');
         expect(artifactContent).toContain('<h1>HarbourLink Service Report</h1>');
-        expect(artifactContent).toContain('SVC/HBL/072026/001');
+        expect(artifactContent).toContain('SVC/HBL/072026/001'); // Check key facts
         expect(artifactContent).toContain('<p>Filter was clogged. Coils were dirty but intact. No leaks detected.</p>');
         expect(artifactContent).toContain('<p>Recommend replacing belt next quarter.</p>');
         expect(artifactContent).toContain('<h2 class="section-title">Signatures & Acknowledgement</h2>');
         expect(artifactContent).toContain('Prepared By:<br>John Doe');
         expect(artifactContent).toContain('Checked By:<br>Jane Smith');
         expect(artifactContent).toContain('Client Representative:<br>Alice Johnson');
+        
+        // Ensure no unresolved mustache tokens exist
         expect(artifactContent).not.toContain('{{');
     });
 });

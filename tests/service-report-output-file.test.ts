@@ -27,10 +27,14 @@ describe('HarbourLink Service Report CLI Output File', () => {
         expect(stdout).toContain('Artifact saved to');
         
         // Check file exists and content is correct
+        // HYBRID GOLDEN VALIDATION STRATEGY
+        // Checking deterministic structured content rather than full string equality
         const fileContent = await fs.readFile(outputPath, 'utf-8');
         expect(fileContent).toContain('<h1>HarbourLink Service Report</h1>');
         expect(fileContent).toContain('Signatures & Acknowledgement');
         expect(fileContent).toContain('Alice Johnson');
+        
+        // Ensure no unresolved mustache tokens exist
         expect(fileContent).not.toContain('{{');
     });
 });

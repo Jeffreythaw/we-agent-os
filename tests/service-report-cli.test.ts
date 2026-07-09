@@ -24,10 +24,14 @@ describe('Service Report CLI Command', () => {
         
         expect(stdout).toContain('Success! Service report saved to');
         
+        // HYBRID GOLDEN VALIDATION STRATEGY
+        // Checking deterministic structured content rather than full string equality
         const fileContent = await fs.readFile(outputPath, 'utf-8');
         expect(fileContent).toContain('<h1>HarbourLink Service Report</h1>');
         expect(fileContent).toContain('Signatures & Acknowledgement');
         expect(fileContent).toContain('Alice Johnson');
+        
+        // Ensure no unresolved mustache tokens exist
         expect(fileContent).not.toContain('{{');
     });
 
