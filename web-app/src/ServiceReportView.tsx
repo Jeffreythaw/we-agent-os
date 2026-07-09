@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { validateServiceReport } from './validation';
 
 type SaveState = 'Saved' | 'Unsaved changes' | 'Saving...' | 'Save failed';
 
@@ -83,22 +84,7 @@ export default function ServiceReportView() {
   };
 
   const validate = () => {
-    const newErrors: Record<string, string> = {};
-    const requiredFields = [
-      'referenceNo', 'projectCode', 'client', 'serviceDate', 'technicianName', 
-      'equipment', 'workDescription', 'findings', 'finalOperatingCondition'
-    ];
-    
-    for (const field of requiredFields) {
-      if (!formData[field as keyof typeof formData]) {
-        newErrors[field] = 'This field is required';
-      }
-    }
-
-    if (photos.length === 0 || photos.some(p => p.trim() === '')) {
-      newErrors['photos'] = 'All photos must have a caption';
-    }
-
+    const newErrors = validateServiceReport(formData, photos);
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -117,11 +103,11 @@ export default function ServiceReportView() {
       workflowName: 'HarbourLink Routine Contract Service Report',
       facts: {
         ...formData,
-        photoCaptions: photos.join('\\n')
+        photoCaptions: photos.join('\n')
       },
       variables: {
         ...formData,
-        photoCaptions: photos.join('\\n')
+        photoCaptions: photos.join('\n')
       }
     };
 
@@ -196,6 +182,15 @@ export default function ServiceReportView() {
               {errors.projectCode && <span className="error-text">{errors.projectCode}</span>}
             </div>
           </div>
+          <div className="form-row">
+            <div className="form-group">
+              <label>Report Category *</label>
+              <select value={formData.reportCategory} onChange={e => handleFieldChange('reportCategory', e.target.value)} className={errors.reportCategory ? 'error-input' : ''}>
+                <option value="ROUTINE_CONTRACT_SERVICE">Routine Contract Service</option>
+              </select>
+              {errors.reportCategory && <span className="error-text">{errors.reportCategory}</span>}
+            </div>
+          </div>
         </div>
 
         <div className="sr-form-section">
@@ -224,7 +219,25 @@ export default function ServiceReportView() {
             </div>
             <div className="form-group">
               <label>Equipment *</label>
-              <input type="text" value={formData.equipment} onChange={e => handleFieldChange('equipment', e.target.value)} className={errors.equipment ? 'error-input' : ''} />
+              <select value={formData.equipment} onChange={e => handleFieldChange('equipment', e.target.value)} className={errors.equipment ? 'error-input' : ''}>
+                <option value="">Select Equipment</option>
+                <option value="FCU/AHU">FCU/AHU</option>
+                <option value="Chiller">Chiller</option>
+                <option value="VRV/VRF">VRV/VRF</option>
+                <option value="Cooling Tower">Cooling Tower</option>
+                <option value="Pump">Pump</option>
+                <option value="MV Fan">MV Fan</option>
+                <option value="Exhaust Fan">Exhaust Fan</option>
+                <option value="Fresh Air Fan">Fresh Air Fan</option>
+                <option value="Pressurization Fan">Pressurization Fan</option>
+                <option value="Motorized Volume Control Damper">Motorized Volume Control Damper</option>
+                <option value="VSD">VSD</option>
+                <option value="Control Panel">Control Panel</option>
+                <option value="BMS Panel">BMS Panel</option>
+                <option value="Split Unit">Split Unit</option>
+                <option value="Package Unit">Package Unit</option>
+                <option value="Other ACMV Equipment">Other ACMV Equipment</option>
+              </select>
               {errors.equipment && <span className="error-text">{errors.equipment}</span>}
             </div>
           </div>

@@ -6,3 +6,5 @@ output/
 .env
 .env.*
 *.log
+web-app/temp-input.json
+web-app/temp-output.html

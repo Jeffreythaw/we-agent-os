@@ -21,7 +21,7 @@ const cliPlugin = () => ({
             fs.writeFileSync(inputPath, body)
             
             const cliPath = path.resolve(process.cwd(), '../dist/cli/index.js')
-            await execAsync(`node "${cliPath}" service-report generate -i "${inputPath}" -o "${outputPath}"`)
+            await execAsync(`node "${cliPath}" service-report generate -i "${inputPath}" -o "${outputPath}"`, { cwd: path.resolve(process.cwd(), '..') })
             
             const html = fs.readFileSync(outputPath, 'utf-8')
             res.setHeader('Content-Type', 'text/html')
