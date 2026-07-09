@@ -68,12 +68,18 @@ node ./dist/cli/index.js service-report generate \
 
 ## 10. Roadmap (v0.2)
 The next major iteration (v0.2) will pivot towards an **Agent-First** expansion. Having proven the deterministic OS boundary, we will aggressively focus on delivering high-value Business Agents:
-- **Service Report Agent**
+- **Service Report Agent** (v0.2 MVP Target)
+- **Data Analysis Agent** (v0.2 MVP Target)
 - **Email Agent**
 - **Quotation Agent**
 - **Inspection Agent**
 - **Bootstrap Agent**
 - **Budget Manager Agent**
+
+### UI Target (v0.2)
+The UI target for v0.2 is strictly **Web-only** (React + Vite). This allows for rapid iteration and deployment.
+> [!NOTE]
+> Desktop/Electron implementations are formally deferred to the **Concept Backlog / Evidence Required** phase to prevent unnecessary complexity and shipping delays.
 
 ## 11. Development Principles
 - **No Deletion**: We append and deprecate; we do not delete historical context.
